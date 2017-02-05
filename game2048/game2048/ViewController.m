@@ -29,7 +29,8 @@ NSMutableArray *dataArray,*dataLinearArray;
 -(void)updateLabelWithMaster2DDataArray
 {
     
-    self.lbl00.text = [dataArray[0][0] isEqualToString :@"0" ] ? nil: dataArray[0][0];
+    //self.lbl00.text = [dataArray[0][0] isEqualToString :@"0" ] ? nil: dataArray[0][0];
+    [[self lbl00 ] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"/tile/2.jpg"]]];
     self.lbl01.text = [dataArray[0][1] isEqualToString :@"0" ] ? nil: dataArray[0][1];
     self.lbl02.text = [dataArray[0][2] isEqualToString :@"0" ] ? nil: dataArray[0][2];
     self.lbl03.text = [dataArray[0][3] isEqualToString :@"0" ] ? nil: dataArray[0][3];
@@ -67,7 +68,9 @@ NSMutableArray *dataArray,*dataLinearArray;
     
     switch(num)
     {
-        case 2:break;
+        case 2:
+            imageName = [NSString stringWithFormat:@"/tile/%i.jpg",2];
+            break;
         case 4:break;
         case 8:break;
         case 16:break;
@@ -79,7 +82,7 @@ NSMutableArray *dataArray,*dataLinearArray;
         case 1024:break;
         case 2048:break;
     }
-    return [UIColor colorWithPatternImage:[UIImage imageNamed:@""]];
+    return [UIColor colorWithPatternImage:[UIImage imageNamed:imageName]];
 }
 
 @end

@@ -180,20 +180,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="117.59999999999999" y="123.68815592203899"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="fsu-m3-Se1">
-            <objects>
-                <viewController id="Urb-wQ-YFz" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Jiz-lY-ndj">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="He9-j5-iQq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
+            <point key="canvasLocation" x="33" y="31"/>
         </scene>
     </scenes>
 </document>
