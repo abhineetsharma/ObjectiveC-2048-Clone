@@ -24,6 +24,7 @@
 		C306B5EF1E47951B0044D9E6 /* 512.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5E41E47951B0044D9E6 /* 512.jpg */; };
 		C306B5F01E47951B0044D9E6 /* 64.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5E51E47951B0044D9E6 /* 64.jpg */; };
 		C306B5F11E47951B0044D9E6 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5E61E47951B0044D9E6 /* 8.jpg */; };
+		C306B5F31E4799D20044D9E6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F21E4799D20044D9E6 /* 2.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +33,7 @@
 		C306B5B01E477B700044D9E6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		C306B5B11E477B700044D9E6 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		C306B5B31E477B700044D9E6 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		C306B5B41E477B700044D9E6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		C306B5B41E477B700044D9E6 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = game2048/ViewController.m; sourceTree = SOURCE_ROOT; };
 		C306B5B71E477B700044D9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C306B5B91E477B700044D9E6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C306B5BC1E477B700044D9E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		C306B5E41E47951B0044D9E6 /* 512.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 512.jpg; sourceTree = "<group>"; };
 		C306B5E51E47951B0044D9E6 /* 64.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 64.jpg; sourceTree = "<group>"; };
 		C306B5E61E47951B0044D9E6 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
+		C306B5F21E4799D20044D9E6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = game2048/tile/2.png; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +107,7 @@
 		C306B5DB1E47951B0044D9E6 /* tile */ = {
 			isa = PBXGroup;
 			children = (
+				C306B5F21E4799D20044D9E6 /* 2.png */,
 				C306B5DC1E47951B0044D9E6 /* 1024.jpg */,
 				C306B5DD1E47951B0044D9E6 /* 128.jpg */,
 				C306B5DE1E47951B0044D9E6 /* 16.jpg */,
@@ -191,6 +194,7 @@
 				C306B5E71E47951B0044D9E6 /* 1024.jpg in Resources */,
 				C306B5B81E477B700044D9E6 /* Main.storyboard in Resources */,
 				C306B5EB1E47951B0044D9E6 /* 2048.jpg in Resources */,
+				C306B5F31E4799D20044D9E6 /* 2.png in Resources */,
 				C306B5E91E47951B0044D9E6 /* 16.jpg in Resources */,
 				C306B5E81E47951B0044D9E6 /* 128.jpg in Resources */,
 			);

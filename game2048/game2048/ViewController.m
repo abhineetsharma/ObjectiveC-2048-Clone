@@ -30,8 +30,29 @@ NSMutableArray *dataArray,*dataLinearArray;
 {
     
     //self.lbl00.text = [dataArray[0][0] isEqualToString :@"0" ] ? nil: dataArray[0][0];
-    [[self lbl00 ] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"/tile/2.jpg"]]];
-    self.lbl01.text = [dataArray[0][1] isEqualToString :@"0" ] ? nil: dataArray[0][1];
+    
+   // self.lbl00.backgroundColor=[UIColor colorWithPatternImage:newImage];
+    //[[self lbl00 ] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"2.png"]]];
+    [self setImage:dataArray[0][0] forLabel:self.lbl00];
+    [self setImage:dataArray[0][1] forLabel:self.lbl01];
+    [self setImage:dataArray[0][2] forLabel:self.lbl02];
+    [self setImage:dataArray[0][3] forLabel:self.lbl03];
+    
+    [self setImage:dataArray[1][0] forLabel:self.lbl10];
+    [self setImage:dataArray[1][1] forLabel:self.lbl11];
+    [self setImage:dataArray[1][2] forLabel:self.lbl12];
+    [self setImage:dataArray[1][3] forLabel:self.lbl13];
+    
+    [self setImage:dataArray[2][0] forLabel:self.lbl20];
+    [self setImage:dataArray[2][1] forLabel:self.lbl21];
+    [self setImage:dataArray[2][2] forLabel:self.lbl22];
+    [self setImage:dataArray[2][3] forLabel:self.lbl23];
+    
+    [self setImage:dataArray[3][0] forLabel:self.lbl30];
+    [self setImage:dataArray[3][1] forLabel:self.lbl31];
+    [self setImage:dataArray[3][2] forLabel:self.lbl32];
+    [self setImage:dataArray[3][3] forLabel:self.lbl33];
+    /* self.lbl01.text = [dataArray[0][1] isEqualToString :@"0" ] ? nil: dataArray[0][1];
     self.lbl02.text = [dataArray[0][2] isEqualToString :@"0" ] ? nil: dataArray[0][2];
     self.lbl03.text = [dataArray[0][3] isEqualToString :@"0" ] ? nil: dataArray[0][3];
     
@@ -48,7 +69,7 @@ NSMutableArray *dataArray,*dataLinearArray;
     self.lbl30.text = [dataArray[3][0] isEqualToString :@"0" ]  ? nil: dataArray[3][0];
     self.lbl31.text = [dataArray[3][1] isEqualToString :@"0" ]  ? nil: dataArray[3][1];
     self.lbl32.text = [dataArray[3][2] isEqualToString :@"0" ]  ? nil: dataArray[3][2];
-    self.lbl33.text = [dataArray[3][3] isEqualToString :@"0" ]  ? nil: dataArray[3][3];
+    self.lbl33.text = [dataArray[3][3] isEqualToString :@"0" ]  ? nil: dataArray[3][3];*/
     
     [self updateDataLinearArrayWithDataArray];
     
@@ -62,27 +83,30 @@ NSMutableArray *dataArray,*dataLinearArray;
             [dataLinearArray addObject:dataArray[i][j]];
     
 }
--(UIColor*) getImage:(int)num
+-(void) setImage:(NSString*)str forLabel:(UILabel*)lbl
 {
-    NSString * imageName;
+    int num = (int)[str integerValue];
+    lbl.text = nil;
     
-    switch(num)
+    if(num<2048)
     {
-        case 2:
-            imageName = [NSString stringWithFormat:@"/tile/%i.jpg",2];
-            break;
-        case 4:break;
-        case 8:break;
-        case 16:break;
-        case 32:break;
-        case 64:break;
-        case 128:break;
-        case 256:break;
-        case 512:break;
-        case 1024:break;
-        case 2048:break;
+        NSString * imageName=[NSString stringWithFormat:@"%i.jpg",num];
+    
+        UIImage *img = [UIImage imageNamed:imageName];
+        CGSize imgSize = lbl.frame.size;
+    
+        UIGraphicsBeginImageContext( imgSize );
+        [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+        lbl.backgroundColor =  [UIColor colorWithPatternImage:newImage];
     }
-    return [UIColor colorWithPatternImage:[UIImage imageNamed:imageName]];
+    else
+    {
+        lbl.text =  str;
+        lbl.backgroundColor = [UIColor colorWithRed:(241/255.0) green:(133/255.0) blue:(0/255.0) alpha:1] ;
+        
+    }
 }
 
 @end
