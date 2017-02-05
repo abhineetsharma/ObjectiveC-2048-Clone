@@ -80,6 +80,7 @@ NSMutableArray *dataArray,*dataLinearArray;
     [self setImage:dataArray[3][1] forLabel:self.lbl31];
     [self setImage:dataArray[3][2] forLabel:self.lbl32];
     [self setImage:dataArray[3][3] forLabel:self.lbl33];
+    [self playSound];
     /* self.lbl01.text = [dataArray[0][1] isEqualToString :@"0" ] ? nil: dataArray[0][1];
     self.lbl02.text = [dataArray[0][2] isEqualToString :@"0" ] ? nil: dataArray[0][2];
     self.lbl03.text = [dataArray[0][3] isEqualToString :@"0" ] ? nil: dataArray[0][3];
@@ -103,6 +104,29 @@ NSMutableArray *dataArray,*dataLinearArray;
     
     
 }
+-(void) updateDataArrayWithDataLinearArray
+{
+    NSMutableArray *arr =[[NSMutableArray alloc]init];
+    dataArray = [[NSMutableArray alloc] initWithCapacity: 4];
+    for(int i=0;i<dataLinearArray.count+1;i++)
+    {
+        
+        if(i==0 || i%4!=0)
+        {
+            
+        }
+        else{
+            
+            [dataArray addObject:arr];
+            arr = [[NSMutableArray alloc]init];
+        }
+        if(dataLinearArray.count>i)
+            [arr addObject:dataLinearArray[i]];
+        
+    }
+    [self updateLabelWithMaster2DDataArray];
+    
+}
 -(void) updateDataLinearArrayWithDataArray
 {
     dataLinearArray = [[NSMutableArray alloc]init];
@@ -120,6 +144,11 @@ NSMutableArray *dataArray,*dataLinearArray;
     
     if(num<2048)
     {
+        UIFont *currentFont = lbl.font;
+        UIFont *newFont = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold",currentFont.fontName] size:currentFont.pointSize];
+        lbl.font = newFont;
+        lbl.text =  ![str isEqualToString:@"0"]?str:@" ";
+        lbl.textColor = [UIColor whiteColor];
         NSString * imageName=[NSString stringWithFormat:@"%i.jpg",num];
     
         UIImage *img = [UIImage imageNamed:imageName ];
@@ -132,7 +161,7 @@ NSMutableArray *dataArray,*dataLinearArray;
         CATransition *animation = [CATransition animation];
         animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
         animation.type = kCATransitionFade;
-        animation.duration = 0.75;
+        animation.duration = 0.5;
         [lbl.layer addAnimation:animation forKey:@"kCATransitionFade"];
         lbl.backgroundColor =  [UIColor colorWithPatternImage:newImage];
     }
@@ -144,6 +173,64 @@ NSMutableArray *dataArray,*dataLinearArray;
         
         
     }
+}
+-(void) addElement
+{
+    for(int i=0;i<[self randomNo:1]/2;i++)
+    {
+        int ran = [self randomNo:2];
+        if([dataLinearArray[ran] isEqualToString: @"0"])
+            dataLinearArray[ran] = [NSString stringWithFormat:@"%i",[self randomNo:1]];
+    }
+    
+    [self updateDataArrayWithDataLinearArray];
+    
+}
+//play sound
+-(void) playSound
+{
+    NSString * rSound = [NSString stringWithFormat:@"%i",[self randomNo:3]];
+    
+    NSString * soundPath = [[NSBundle mainBundle]
+                            pathForResource:rSound ofType:@"wav"];
+    NSURL * sound1 =  [NSURL fileURLWithPath:soundPath];
+    AudioServicesCreateSystemSoundID ((__bridge CFURLRef)sound1, &theSound);
+    
+    AudioServicesPlaySystemSound(theSound);
+}
+-(int) randomNo:(int) choice
+{
+    int num=0;
+    switch (choice) {
+        case 1:{
+            int r = arc4random() % 2;
+            
+            if(r == 0)
+                num = 2;
+            else
+                num = 4;
+        }
+            break;
+        case 2:
+        {
+            num = arc4random() % 16;
+            break;
+            
+        }
+        case 3:
+        {
+            num = arc4random_uniform(22);
+            num++;
+            break;
+        
+        }
+            
+        default:
+            break;
+    }
+    
+    return num;
+    
 }
 -(NSMutableArray*) removeSpace:(NSMutableArray*) nsa
 {

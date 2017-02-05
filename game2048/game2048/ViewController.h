@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <AudioToolbox/AudioToolbox.h>
 
-@interface ViewController : UIViewController
+@interface ViewController : UIViewController{
+    SystemSoundID theSound;
+}
 @property (weak, nonatomic) IBOutlet UILabel *lbl00;
 @property (weak, nonatomic) IBOutlet UILabel *lbl01;
 @property (weak, nonatomic) IBOutlet UILabel *lbl02;

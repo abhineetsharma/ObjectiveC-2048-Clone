@@ -28,6 +28,30 @@
 		C306B5F51E47A3DC0044D9E6 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F41E47A3DC0044D9E6 /* 0.jpg */; };
 		C306B5F71E47BD8F0044D9E6 /* 2048_logo.svg.png in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F61E47BD8F0044D9E6 /* 2048_logo.svg.png */; };
 		C306B5F91E47C1070044D9E6 /* 2.gif in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F81E47C1070044D9E6 /* 2.gif */; };
+		C306B5FB1E47D2F90044D9E6 /* star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5FA1E47D2F90044D9E6 /* star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg */; };
+		C306B5FD1E47D6390044D9E6 /* 546434_star_wars.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5FC1E47D6390044D9E6 /* 546434_star_wars.jpg */; };
+		C306B6151E47D7860044D9E6 /* 1.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B5FF1E47D7860044D9E6 /* 1.wav */; };
+		C306B6161E47D7860044D9E6 /* 2.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6001E47D7860044D9E6 /* 2.wav */; };
+		C306B6171E47D7860044D9E6 /* 3.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6011E47D7860044D9E6 /* 3.wav */; };
+		C306B6181E47D7860044D9E6 /* 4.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6021E47D7860044D9E6 /* 4.wav */; };
+		C306B6191E47D7860044D9E6 /* 5.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6031E47D7860044D9E6 /* 5.wav */; };
+		C306B61A1E47D7860044D9E6 /* 6.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6041E47D7860044D9E6 /* 6.wav */; };
+		C306B61B1E47D7860044D9E6 /* 7.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6051E47D7860044D9E6 /* 7.wav */; };
+		C306B61C1E47D7860044D9E6 /* 8.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6061E47D7860044D9E6 /* 8.wav */; };
+		C306B61D1E47D7860044D9E6 /* 9.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6071E47D7860044D9E6 /* 9.wav */; };
+		C306B61E1E47D7860044D9E6 /* 10.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6081E47D7860044D9E6 /* 10.wav */; };
+		C306B61F1E47D7860044D9E6 /* 11.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6091E47D7860044D9E6 /* 11.wav */; };
+		C306B6201E47D7860044D9E6 /* 12.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60A1E47D7860044D9E6 /* 12.wav */; };
+		C306B6211E47D7860044D9E6 /* 13.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60B1E47D7860044D9E6 /* 13.wav */; };
+		C306B6221E47D7860044D9E6 /* 14.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60C1E47D7860044D9E6 /* 14.wav */; };
+		C306B6231E47D7860044D9E6 /* 15.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60D1E47D7860044D9E6 /* 15.wav */; };
+		C306B6241E47D7860044D9E6 /* 16.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60E1E47D7860044D9E6 /* 16.wav */; };
+		C306B6251E47D7860044D9E6 /* 17.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B60F1E47D7860044D9E6 /* 17.wav */; };
+		C306B6261E47D7860044D9E6 /* 18.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6101E47D7860044D9E6 /* 18.wav */; };
+		C306B6271E47D7860044D9E6 /* 19.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6111E47D7860044D9E6 /* 19.wav */; };
+		C306B6281E47D7860044D9E6 /* 20.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6121E47D7860044D9E6 /* 20.wav */; };
+		C306B6291E47D7860044D9E6 /* 21.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6131E47D7860044D9E6 /* 21.wav */; };
+		C306B62A1E47D7860044D9E6 /* 22.wav in Resources */ = {isa = PBXBuildFile; fileRef = C306B6141E47D7860044D9E6 /* 22.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +80,30 @@
 		C306B5F41E47A3DC0044D9E6 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 		C306B5F61E47BD8F0044D9E6 /* 2048_logo.svg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2048_logo.svg.png; sourceTree = "<group>"; };
 		C306B5F81E47C1070044D9E6 /* 2.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = 2.gif; sourceTree = "<group>"; };
+		C306B5FA1E47D2F90044D9E6 /* star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg"; sourceTree = "<group>"; };
+		C306B5FC1E47D6390044D9E6 /* 546434_star_wars.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 546434_star_wars.jpg; sourceTree = "<group>"; };
+		C306B5FF1E47D7860044D9E6 /* 1.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 1.wav; sourceTree = "<group>"; };
+		C306B6001E47D7860044D9E6 /* 2.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 2.wav; sourceTree = "<group>"; };
+		C306B6011E47D7860044D9E6 /* 3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 3.wav; sourceTree = "<group>"; };
+		C306B6021E47D7860044D9E6 /* 4.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 4.wav; sourceTree = "<group>"; };
+		C306B6031E47D7860044D9E6 /* 5.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 5.wav; sourceTree = "<group>"; };
+		C306B6041E47D7860044D9E6 /* 6.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 6.wav; sourceTree = "<group>"; };
+		C306B6051E47D7860044D9E6 /* 7.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 7.wav; sourceTree = "<group>"; };
+		C306B6061E47D7860044D9E6 /* 8.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 8.wav; sourceTree = "<group>"; };
+		C306B6071E47D7860044D9E6 /* 9.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 9.wav; sourceTree = "<group>"; };
+		C306B6081E47D7860044D9E6 /* 10.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 10.wav; sourceTree = "<group>"; };
+		C306B6091E47D7860044D9E6 /* 11.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 11.wav; sourceTree = "<group>"; };
+		C306B60A1E47D7860044D9E6 /* 12.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 12.wav; sourceTree = "<group>"; };
+		C306B60B1E47D7860044D9E6 /* 13.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 13.wav; sourceTree = "<group>"; };
+		C306B60C1E47D7860044D9E6 /* 14.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 14.wav; sourceTree = "<group>"; };
+		C306B60D1E47D7860044D9E6 /* 15.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 15.wav; sourceTree = "<group>"; };
+		C306B60E1E47D7860044D9E6 /* 16.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 16.wav; sourceTree = "<group>"; };
+		C306B60F1E47D7860044D9E6 /* 17.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 17.wav; sourceTree = "<group>"; };
+		C306B6101E47D7860044D9E6 /* 18.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 18.wav; sourceTree = "<group>"; };
+		C306B6111E47D7860044D9E6 /* 19.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 19.wav; sourceTree = "<group>"; };
+		C306B6121E47D7860044D9E6 /* 20.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 20.wav; sourceTree = "<group>"; };
+		C306B6131E47D7860044D9E6 /* 21.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 21.wav; sourceTree = "<group>"; };
+		C306B6141E47D7860044D9E6 /* 22.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = 22.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +136,7 @@
 		C306B5AC1E477B700044D9E6 /* game2048 */ = {
 			isa = PBXGroup;
 			children = (
+				C306B5FE1E47D7760044D9E6 /* sound */,
 				C306B5DB1E47951B0044D9E6 /* tile */,
 				C306B5B01E477B700044D9E6 /* AppDelegate.h */,
 				C306B5B11E477B700044D9E6 /* AppDelegate.m */,
@@ -113,9 +162,11 @@
 		C306B5DB1E47951B0044D9E6 /* tile */ = {
 			isa = PBXGroup;
 			children = (
+				C306B5FA1E47D2F90044D9E6 /* star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg */,
 				C306B5F81E47C1070044D9E6 /* 2.gif */,
 				C306B5F61E47BD8F0044D9E6 /* 2048_logo.svg.png */,
 				C306B5F41E47A3DC0044D9E6 /* 0.jpg */,
+				C306B5FC1E47D6390044D9E6 /* 546434_star_wars.jpg */,
 				C306B5F21E4799D20044D9E6 /* 2.png */,
 				C306B5DC1E47951B0044D9E6 /* 1024.jpg */,
 				C306B5DD1E47951B0044D9E6 /* 128.jpg */,
@@ -130,6 +181,35 @@
 				C306B5E61E47951B0044D9E6 /* 8.jpg */,
 			);
 			path = tile;
+			sourceTree = "<group>";
+		};
+		C306B5FE1E47D7760044D9E6 /* sound */ = {
+			isa = PBXGroup;
+			children = (
+				C306B5FF1E47D7860044D9E6 /* 1.wav */,
+				C306B6001E47D7860044D9E6 /* 2.wav */,
+				C306B6011E47D7860044D9E6 /* 3.wav */,
+				C306B6021E47D7860044D9E6 /* 4.wav */,
+				C306B6031E47D7860044D9E6 /* 5.wav */,
+				C306B6041E47D7860044D9E6 /* 6.wav */,
+				C306B6051E47D7860044D9E6 /* 7.wav */,
+				C306B6061E47D7860044D9E6 /* 8.wav */,
+				C306B6071E47D7860044D9E6 /* 9.wav */,
+				C306B6081E47D7860044D9E6 /* 10.wav */,
+				C306B6091E47D7860044D9E6 /* 11.wav */,
+				C306B60A1E47D7860044D9E6 /* 12.wav */,
+				C306B60B1E47D7860044D9E6 /* 13.wav */,
+				C306B60C1E47D7860044D9E6 /* 14.wav */,
+				C306B60D1E47D7860044D9E6 /* 15.wav */,
+				C306B60E1E47D7860044D9E6 /* 16.wav */,
+				C306B60F1E47D7860044D9E6 /* 17.wav */,
+				C306B6101E47D7860044D9E6 /* 18.wav */,
+				C306B6111E47D7860044D9E6 /* 19.wav */,
+				C306B6121E47D7860044D9E6 /* 20.wav */,
+				C306B6131E47D7860044D9E6 /* 21.wav */,
+				C306B6141E47D7860044D9E6 /* 22.wav */,
+			);
+			name = sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -191,24 +271,48 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C306B5FB1E47D2F90044D9E6 /* star-wars-may-the-force-be-with-you-glitter-girls-t-shirt1.jpg in Resources */,
 				C306B5F01E47951B0044D9E6 /* 64.jpg in Resources */,
 				C306B5EE1E47951B0044D9E6 /* 4.jpg in Resources */,
+				C306B6281E47D7860044D9E6 /* 20.wav in Resources */,
 				C306B5ED1E47951B0044D9E6 /* 32.jpg in Resources */,
 				C306B5F91E47C1070044D9E6 /* 2.gif in Resources */,
+				C306B6241E47D7860044D9E6 /* 16.wav in Resources */,
+				C306B6201E47D7860044D9E6 /* 12.wav in Resources */,
+				C306B61A1E47D7860044D9E6 /* 6.wav in Resources */,
+				C306B6181E47D7860044D9E6 /* 4.wav in Resources */,
 				C306B5EC1E47951B0044D9E6 /* 256.jpg in Resources */,
+				C306B6221E47D7860044D9E6 /* 14.wav in Resources */,
 				C306B5F51E47A3DC0044D9E6 /* 0.jpg in Resources */,
 				C306B5BD1E477B700044D9E6 /* LaunchScreen.storyboard in Resources */,
 				C306B5BA1E477B700044D9E6 /* Assets.xcassets in Resources */,
 				C306B5F71E47BD8F0044D9E6 /* 2048_logo.svg.png in Resources */,
 				C306B5F11E47951B0044D9E6 /* 8.jpg in Resources */,
 				C306B5EA1E47951B0044D9E6 /* 2.jpg in Resources */,
+				C306B6191E47D7860044D9E6 /* 5.wav in Resources */,
+				C306B6261E47D7860044D9E6 /* 18.wav in Resources */,
 				C306B5EF1E47951B0044D9E6 /* 512.jpg in Resources */,
+				C306B6211E47D7860044D9E6 /* 13.wav in Resources */,
 				C306B5E71E47951B0044D9E6 /* 1024.jpg in Resources */,
+				C306B62A1E47D7860044D9E6 /* 22.wav in Resources */,
+				C306B6271E47D7860044D9E6 /* 19.wav in Resources */,
 				C306B5B81E477B700044D9E6 /* Main.storyboard in Resources */,
+				C306B61E1E47D7860044D9E6 /* 10.wav in Resources */,
+				C306B6161E47D7860044D9E6 /* 2.wav in Resources */,
+				C306B6231E47D7860044D9E6 /* 15.wav in Resources */,
+				C306B6151E47D7860044D9E6 /* 1.wav in Resources */,
 				C306B5EB1E47951B0044D9E6 /* 2048.jpg in Resources */,
 				C306B5F31E4799D20044D9E6 /* 2.png in Resources */,
+				C306B6171E47D7860044D9E6 /* 3.wav in Resources */,
+				C306B6291E47D7860044D9E6 /* 21.wav in Resources */,
 				C306B5E91E47951B0044D9E6 /* 16.jpg in Resources */,
+				C306B61C1E47D7860044D9E6 /* 8.wav in Resources */,
+				C306B5FD1E47D6390044D9E6 /* 546434_star_wars.jpg in Resources */,
 				C306B5E81E47951B0044D9E6 /* 128.jpg in Resources */,
+				C306B6251E47D7860044D9E6 /* 17.wav in Resources */,
+				C306B61D1E47D7860044D9E6 /* 9.wav in Resources */,
+				C306B61B1E47D7860044D9E6 /* 7.wav in Resources */,
+				C306B61F1E47D7860044D9E6 /* 11.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
