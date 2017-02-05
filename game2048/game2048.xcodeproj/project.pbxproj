@@ -25,6 +25,7 @@
 		C306B5F01E47951B0044D9E6 /* 64.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5E51E47951B0044D9E6 /* 64.jpg */; };
 		C306B5F11E47951B0044D9E6 /* 8.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5E61E47951B0044D9E6 /* 8.jpg */; };
 		C306B5F31E4799D20044D9E6 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F21E4799D20044D9E6 /* 2.png */; };
+		C306B5F51E47A3DC0044D9E6 /* 0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C306B5F41E47A3DC0044D9E6 /* 0.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		C306B5E51E47951B0044D9E6 /* 64.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 64.jpg; sourceTree = "<group>"; };
 		C306B5E61E47951B0044D9E6 /* 8.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 8.jpg; sourceTree = "<group>"; };
 		C306B5F21E4799D20044D9E6 /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = 2.png; path = game2048/tile/2.png; sourceTree = SOURCE_ROOT; };
+		C306B5F41E47A3DC0044D9E6 /* 0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 0.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		C306B5DB1E47951B0044D9E6 /* tile */ = {
 			isa = PBXGroup;
 			children = (
+				C306B5F41E47A3DC0044D9E6 /* 0.jpg */,
 				C306B5F21E4799D20044D9E6 /* 2.png */,
 				C306B5DC1E47951B0044D9E6 /* 1024.jpg */,
 				C306B5DD1E47951B0044D9E6 /* 128.jpg */,
@@ -186,6 +189,7 @@
 				C306B5EE1E47951B0044D9E6 /* 4.jpg in Resources */,
 				C306B5ED1E47951B0044D9E6 /* 32.jpg in Resources */,
 				C306B5EC1E47951B0044D9E6 /* 256.jpg in Resources */,
+				C306B5F51E47A3DC0044D9E6 /* 0.jpg in Resources */,
 				C306B5BD1E477B700044D9E6 /* LaunchScreen.storyboard in Resources */,
 				C306B5BA1E477B700044D9E6 /* Assets.xcassets in Resources */,
 				C306B5F11E47951B0044D9E6 /* 8.jpg in Resources */,

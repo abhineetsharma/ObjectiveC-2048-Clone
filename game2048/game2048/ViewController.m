@@ -17,7 +17,35 @@ NSMutableArray *dataArray,*dataLinearArray;
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    dataArray = [[NSMutableArray alloc] initWithCapacity: 4];
+    
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"8",@"2",@"2",nil] atIndex:0];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"4",@"8",@"4",@"4",nil] atIndex:1];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"4",@"0",@"0",@"2",nil] atIndex:2];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"2",@"16",@"0",@"0",nil] atIndex:3];
+ 
+
     [self updateLabelWithMaster2DDataArray];
+    //left Swipe
+    UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
+    swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
+    [self.view addGestureRecognizer:swipeleft];
+    
+    //right Swipe
+    UISwipeGestureRecognizer * swiperight=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swiperight:)];
+    swiperight.direction=UISwipeGestureRecognizerDirectionRight;
+    [self.view addGestureRecognizer:swiperight];
+    
+    //up Swipe
+    UISwipeGestureRecognizer * swipeup=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeup:)];
+    swipeup.direction=UISwipeGestureRecognizerDirectionUp;
+    [self.view addGestureRecognizer:swipeup];
+    
+    //down Swipe
+    UISwipeGestureRecognizer * swipedown=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipedown:)];
+    swipedown.direction=UISwipeGestureRecognizerDirectionDown;
+    [self.view addGestureRecognizer:swipedown];
+
 }
 
 
@@ -85,8 +113,10 @@ NSMutableArray *dataArray,*dataLinearArray;
 }
 -(void) setImage:(NSString*)str forLabel:(UILabel*)lbl
 {
+    //str=@"4096";
     int num = (int)[str integerValue];
-    lbl.text = nil;
+    
+    lbl.text=@"";
     
     if(num<2048)
     {
@@ -104,9 +134,375 @@ NSMutableArray *dataArray,*dataLinearArray;
     else
     {
         lbl.text =  str;
+        lbl.textColor = [UIColor whiteColor];
         lbl.backgroundColor = [UIColor colorWithRed:(241/255.0) green:(133/255.0) blue:(0/255.0) alpha:1] ;
+        
         
     }
 }
+-(NSMutableArray*) removeSpace:(NSMutableArray*) nsa
+{
+    
+    NSMutableArray *ns = [[NSMutableArray alloc]init];
+    //NSMutableArray *ns1 = [[NSMutableArray alloc]init];
+    
+    for(NSString * str in nsa)
+    {
+        if(![str isEqualToString:@"0"])
+        {
+            [ns addObject:str];
+        }
+    }
+    /*
+     NSMutableArray * rns = [[ns reverseObjectEnumerator] mutableCopy];
+    
+    for(int i=0;i<rns.count-1;i++)
+    {
+        NSString* na1 = rns[i];
+        NSString* na2 = rns[i+1];
+        if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+        {
+            int n = (int)[na1 integerValue];
+            rns[i] = [NSString stringWithFormat:@"%i", n*2];
+            rns[i+1]= rns[i+2];
+        }
+    }
+    for(NSString * str in rns)
+    {
+        if(![str isEqualToString:@"0"])
+        {
+            [ns1 addObject:str];
+        }
+    }*/
+    
+    
+    
+    return ns;
+    
+    
+}
+-(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    int count = (int)dataArray.count;
+    // NSLog(@"%@",dataArray);
+    NSMutableArray * mns = [[NSMutableArray alloc]init];
+    for(NSMutableArray * n in dataArray)
+    {
+        NSMutableArray * m = [[NSMutableArray alloc]init];
+        m = [[[n reverseObjectEnumerator] allObjects]mutableCopy];
+        [mns addObject:[self removeSpace:m]];
+        
+    }
+    
+    // NSLog(@"mns %@",mns);
+    int j =0;
+    for(NSMutableArray *na in mns)
+    {
+        int i =count-1 ;
+        for(NSString * ns in na)
+        {
+            
+            //NSString * msg = [NSString stringWithFormat:@"%i %i %@",count-1-i,j,ns];
+            dataArray[j][i] = ns;
+            i--;
+            
+        }
+        
+        int naCount =(int) na.count;
+        
+        if(count-naCount>0)
+        {
+            for(int l=0;l<count-naCount;l++)
+            {
+                dataArray[j][l] = @"0";
+                //NSString * msg = [NSString stringWithFormat:@"%i %i %@",l,j,@"0"];
+                
+                
+            }
+        }
+        
+        j++;
+    }
+    [self updateLabelWithMaster2DDataArray];
+    
+    for(int j=0;j<count;j++)
+    {
+        for(int i =count-1;i>0;i--)
+        {
+            //NSString * msg = [NSString stringWithFormat:@"%@ %@",na[i],na[i-1]];
+            //NSLog(msg);
+            NSString* na1 = dataArray[j][i];
+            NSString* na2 = dataArray[j][i-1];
+            
+            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+            {
+                int n = (int)[na1 integerValue]*2;
+                dataArray[j][i] = [NSString stringWithFormat:@"%i",n];
+                
+                if(i-2>=0)
+                {
+                    int h=1;
+                    for(int k=i-1; k>0;k--)
+                    {
+                        
+                        dataArray[j][k] = dataArray[j][k-1];
+                        h=k-1;
+                        
+                    }
+                    if(h==0)
+                    {
+                        dataArray[j][h]= @"0";
+                    }
+                    
+                }
+                else
+                    dataArray[j][i-1]=@"0";
+            }
+        }
+        
+    }
+    //NSLog(@"%@",dataArray);
+    [self updateLabelWithMaster2DDataArray];
+    //[self addElement];
+    
+}
+
+-(void)swipeleft:(UISwipeGestureRecognizer*)gestureRecognizer
+{
+    int count = (int)dataArray.count;
+    // NSLog(@"%@",dataArray);
+    NSMutableArray * mns = [[NSMutableArray alloc]init];
+    for(NSMutableArray * n in dataArray)
+    {
+        [mns addObject:[self removeSpace:n]];
+        
+    }
+    
+    // NSLog(@"mns %@",mns);
+    int j =0;
+    for(NSMutableArray *na in mns)
+    {
+        int i =0 ;
+        for(NSString * ns in na)
+        {
+            
+            //NSString * msg = [NSString stringWithFormat:@"%i %i %@",count-1-i,j,ns];
+            dataArray[j][i] = ns;
+            i++;
+            
+        }
+        
+        int naCount =(int) na.count;
+        
+        if(count-naCount>0)
+        {
+            for(int l=naCount;l<count;l++)
+            {
+                dataArray[j][l] = @"0";
+                //NSString * msg = [NSString stringWithFormat:@"%i %i %@",l,j,@"0"];
+                
+                
+            }
+        }
+        
+        j++;
+    }
+    [self updateLabelWithMaster2DDataArray];
+    for(int j=0;j<count;j++)
+    {
+        for(int i =0;i<count-1;i++)
+        {
+            //NSString * msg = [NSString stringWithFormat:@"%@ %@",na[i],na[i-1]];
+            //NSLog(msg);
+            NSString* na1 = dataArray[j][i];
+            NSString* na2 = dataArray[j][i+1];
+            
+            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+            {
+                int n = (int)[na1 integerValue]*2;
+                dataArray[j][i] = [NSString stringWithFormat:@"%i",n];
+                
+                if(i+2<count)
+                {
+                    int h=1;
+                    for(int k=i+1; k<count-1;k++)
+                    {
+                        
+                        dataArray[j][k] = dataArray[j][k+1];
+                        h=k+1;
+                        
+                    }
+                    if(h==count-1)
+                    {
+                        dataArray[j][h]= @"0";
+                    }
+                    
+                }
+                else
+                    dataArray[j][i+1]=@"0";
+            }
+        }
+        
+    }
+    //NSLog(@"%@",dataArray);
+    [self updateLabelWithMaster2DDataArray];
+    // [self addElement];
+    
+}
+//Swipe Up function
+-(void)swipeup:(UISwipeGestureRecognizer*)gestureRecognizer{
+    int count = (int)dataArray.count;
+    
+    // NSLog(@"%@",dataArray);
+    NSMutableArray * mns = [[NSMutableArray alloc]init];
+    for(int j = 0 ;j<count;j++){
+        NSMutableArray * ns = [[NSMutableArray alloc]init];
+        for(int i=0;i<count;i++)
+        {
+            [ns addObject:dataArray[i][j]];
+        }
+        [mns addObject:[self removeSpace:ns]];
+        
+    }
+    // NSLog(@"mns %@",mns);
+    int j =0;
+    for(NSMutableArray *na in mns)
+    {
+        int i =0 ;
+        for(NSString * ns in na)
+        {
+            
+            //NSString * msg = [NSString stringWithFormat:@"%i %i %@",count-1-i,j,ns];
+            dataArray[i][j] = ns;
+            i++;
+            
+        }
+        
+        int naCount =(int) na.count;
+        
+        if(count-naCount>0)
+        {
+            for(int l=0;l<count-naCount;l++)
+            {
+                dataArray[count-l-1][j] = @"0";
+                //NSString * msg = [NSString stringWithFormat:@"%i %i %@",l,j,@"0"];
+                
+                
+            }
+        }
+        
+        j++;
+    }
+    [self updateLabelWithMaster2DDataArray];
+    
+    for(int j=0;j<count;j++)
+    {
+        for(int i =0;i<count-2;i++)
+        {
+            //NSString * msg = [NSString stringWithFormat:@"%@ %@",na[i],na[i-1]];
+            //NSLog(msg);
+            NSString* na1 = dataArray[i][j];
+            NSString* na2 = dataArray[i+1][j];
+            
+            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+            {
+                int n = (int)[na1 integerValue]*2;
+                dataArray[i][j] = [NSString stringWithFormat:@"%i",n];
+                
+                
+                if(i+2<count)
+                {
+                    for(int k=i+1; k<count;k++)
+                    {
+                        if(k+1<count)
+                            dataArray[k][j] = dataArray[k+1][j];
+                        
+                    }
+                }
+                else
+                    dataArray[i+1][j]=@"0";
+            }
+        }
+        
+    }
+    //NSLog(@"%@",dataArray);
+    [self updateLabelWithMaster2DDataArray];
+    //[self addElement];
+    
+    
+}
+//Swipe Down
+-(void)swipedown:(UISwipeGestureRecognizer*)gestureRecognizer{
+    int count = (int)dataArray.count;
+    
+    // NSLog(@"%@",dataArray);
+    NSMutableArray * mns = [[NSMutableArray alloc]init];
+    for(int j = 0 ;j<count;j++){
+        NSMutableArray * ns = [[NSMutableArray alloc]init];
+        for(int i=0;i<count;i++)
+        {
+            [ns addObject:dataArray[count-1-i][j]];
+        }
+        [mns addObject:[self removeSpace:ns]];
+        
+    }
+    // NSLog(@"mns %@",mns);
+    int j =0;
+    for(NSMutableArray *na in mns)
+    {
+        int i =0 ;
+        for(NSString * ns in na)
+        {
+            //NSString * msg = [NSString stringWithFormat:@"%i %i %@",count-1-i,j,ns];
+            dataArray[count -1 -i][j] = ns;
+            
+            i++;
+        }
+        
+        int naCount =(int) na.count;
+        i=0;
+        if(count-naCount>0)
+        {
+            for(int l=0;l<count-naCount;l++)
+            {
+                dataArray[l][j] = @"0";
+                //NSString * msg = [NSString stringWithFormat:@"%i %i %@",l,j,@"0"];
+                
+                
+            }
+        }
+        
+        j++;
+    }
+    [self updateLabelWithMaster2DDataArray];
+    
+    for(int j=0;j<count;j++)
+    {
+        for(int i =count-1;i>0;i--)
+        {
+            //NSString * msg = [NSString stringWithFormat:@"%@ %@",na[i],na[i-1]];
+            //NSLog(msg);
+            NSString* na1 = dataArray[i][j];
+            NSString* na2 = dataArray[i-1][j];
+            
+            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+            {
+                int n = (int)[na1 integerValue]*2;
+                dataArray[i][j] = [NSString stringWithFormat:@"%i",n];
+                
+                if(i-2>-1)
+                    dataArray[i-1][j]=dataArray[i-2][j];
+                else
+                    dataArray[i-1][j]=@"0";
+            }
+        }
+        
+    }
+    //NSLog(@"%@",dataArray);
+    [self updateLabelWithMaster2DDataArray];
+    //[self addElement];
+    
+}
+
 
 @end
