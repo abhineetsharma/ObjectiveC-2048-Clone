@@ -122,13 +122,18 @@ NSMutableArray *dataArray,*dataLinearArray;
     {
         NSString * imageName=[NSString stringWithFormat:@"%i.jpg",num];
     
-        UIImage *img = [UIImage imageNamed:imageName];
+        UIImage *img = [UIImage imageNamed:imageName ];
         CGSize imgSize = lbl.frame.size;
     
         UIGraphicsBeginImageContext( imgSize );
-        [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height)];
+        [img drawInRect:CGRectMake(0,0,imgSize.width,imgSize.height) ];
         UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
         UIGraphicsEndImageContext();
+        CATransition *animation = [CATransition animation];
+        animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+        animation.type = kCATransitionFade;
+        animation.duration = 0.75;
+        [lbl.layer addAnimation:animation forKey:@"kCATransitionFade"];
         lbl.backgroundColor =  [UIColor colorWithPatternImage:newImage];
     }
     else
