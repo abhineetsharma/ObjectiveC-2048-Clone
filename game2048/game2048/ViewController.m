@@ -13,19 +13,37 @@
 @end
 
 @implementation ViewController
+UIFont *newFont ;
 NSMutableArray *dataArray,*dataLinearArray;
+int score;
+NSString *hScore;
+bool soundFlag;
 - (void)viewDidLoad {
     [super viewDidLoad];
+    soundFlag = YES;
+   
+    
+    hScore = [[NSUserDefaults standardUserDefaults] stringForKey:@"highScore"];
+    self.lblHighScore.text = hScore;
+    NSLog(@"%@2", hScore);
+    UIFont *currentFont = self.lbl00.font;
+    
+    newFont = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold",currentFont.fontName] size:24];
     // Do any additional setup after loading the view, typically from a nib.
     dataArray = [[NSMutableArray alloc] initWithCapacity: 4];
     
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"8",@"2",@"2",nil] atIndex:0];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"4",@"8",@"4",@"4",nil] atIndex:1];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"4",@"0",@"0",@"2",nil] atIndex:2];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"2",@"16",@"0",@"0",nil] atIndex:3];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:0];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:1];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:2];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:3];
  
 
+    
     [self updateLabelWithMaster2DDataArray];
+    for(int i=0;i<2;i++)
+    {
+        [self addElement];
+    }
     //left Swipe
     UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
     swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
@@ -53,14 +71,23 @@ NSMutableArray *dataArray,*dataLinearArray;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+- (IBAction)switchToggle:(id)sender {
+    UISwitch *mySwitch = (UISwitch *)sender;
+    if ([mySwitch isOn]) {
+        NSLog(@"its on!");
+        soundFlag = YES;
+    } else {
+        NSLog(@"its off!");
+        soundFlag = NO;
+    }
+
+}
+
 
 -(void)updateLabelWithMaster2DDataArray
 {
     
-    //self.lbl00.text = [dataArray[0][0] isEqualToString :@"0" ] ? nil: dataArray[0][0];
-    
-   // self.lbl00.backgroundColor=[UIColor colorWithPatternImage:newImage];
-    //[[self lbl00 ] setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"2.png"]]];
+   
     [self setImage:dataArray[0][0] forLabel:self.lbl00];
     [self setImage:dataArray[0][1] forLabel:self.lbl01];
     [self setImage:dataArray[0][2] forLabel:self.lbl02];
@@ -80,26 +107,19 @@ NSMutableArray *dataArray,*dataLinearArray;
     [self setImage:dataArray[3][1] forLabel:self.lbl31];
     [self setImage:dataArray[3][2] forLabel:self.lbl32];
     [self setImage:dataArray[3][3] forLabel:self.lbl33];
-    [self playSound];
-    /* self.lbl01.text = [dataArray[0][1] isEqualToString :@"0" ] ? nil: dataArray[0][1];
-    self.lbl02.text = [dataArray[0][2] isEqualToString :@"0" ] ? nil: dataArray[0][2];
-    self.lbl03.text = [dataArray[0][3] isEqualToString :@"0" ] ? nil: dataArray[0][3];
+    if(soundFlag)
+        [self playSound];
     
-    self.lbl10.text = [dataArray[1][0] isEqualToString :@"0" ]  ? nil: dataArray[1][0];
-    self.lbl11.text = [dataArray[1][1] isEqualToString :@"0" ]  ? nil: dataArray[1][1];
-    self.lbl12.text = [dataArray[1][2] isEqualToString :@"0" ]  ? nil: dataArray[1][2];
-    self.lbl13.text = [dataArray[1][3] isEqualToString :@"0" ]  ? nil: dataArray[1][3];
-    
-    self.lbl20.text = [dataArray[2][0] isEqualToString :@"0" ]  ? nil: dataArray[2][0];
-    self.lbl21.text = [dataArray[2][1] isEqualToString :@"0" ]  ? nil: dataArray[2][1];
-    self.lbl22.text = [dataArray[2][2] isEqualToString :@"0" ]  ? nil: dataArray[2][2];
-    self.lbl23.text = [dataArray[2][3] isEqualToString :@"0" ]  ? nil: dataArray[2][3];
-    
-    self.lbl30.text = [dataArray[3][0] isEqualToString :@"0" ]  ? nil: dataArray[3][0];
-    self.lbl31.text = [dataArray[3][1] isEqualToString :@"0" ]  ? nil: dataArray[3][1];
-    self.lbl32.text = [dataArray[3][2] isEqualToString :@"0" ]  ? nil: dataArray[3][2];
-    self.lbl33.text = [dataArray[3][3] isEqualToString :@"0" ]  ? nil: dataArray[3][3];*/
-    
+    self.lblScore.text = [NSString stringWithFormat:@"%i",score];
+    int highScoreInt = [hScore intValue];
+    if(score>highScoreInt){
+        hScore = [NSString stringWithFormat:@"%i",score];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:hScore forKey:@"highScore"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+        self.lblHighScore.text = hScore;
+        
+    }
     [self updateDataLinearArrayWithDataArray];
     
     
@@ -135,20 +155,22 @@ NSMutableArray *dataArray,*dataLinearArray;
             [dataLinearArray addObject:dataArray[i][j]];
     
 }
+bool alertShown=NO;
 -(void) setImage:(NSString*)str forLabel:(UILabel*)lbl
 {
     //str=@"4096";
     int num = (int)[str integerValue];
     
-    lbl.text=@"";
+    //lbl.text=@"";
     
     if(num<2048)
     {
-        UIFont *currentFont = lbl.font;
-        UIFont *newFont = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold",currentFont.fontName] size:currentFont.pointSize];
+        
         lbl.font = newFont;
         lbl.text =  ![str isEqualToString:@"0"]?str:@" ";
         lbl.textColor = [UIColor whiteColor];
+        
+        
         NSString * imageName=[NSString stringWithFormat:@"%i.jpg",num];
     
         UIImage *img = [UIImage imageNamed:imageName ];
@@ -167,6 +189,15 @@ NSMutableArray *dataArray,*dataLinearArray;
     }
     else
     {
+        if(!alertShown){
+        UIAlertController * alertController =[UIAlertController alertControllerWithTitle:@"You won" message:@"Congratulation on making 2048 tile" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Continue" style:UIAlertActionStyleDefault handler:nil];
+        [alertController addAction:ok];
+        
+        dispatch_async(dispatch_get_main_queue(),^{[self presentViewController:alertController animated:YES completion:nil];});
+            alertShown=YES;
+        }
+   
         lbl.text =  str;
         lbl.textColor = [UIColor whiteColor];
         lbl.backgroundColor = [UIColor colorWithRed:(241/255.0) green:(133/255.0) blue:(0/255.0) alpha:1] ;
@@ -176,14 +207,25 @@ NSMutableArray *dataArray,*dataLinearArray;
 }
 -(void) addElement
 {
-    for(int i=0;i<[self randomNo:1]/2;i++)
+    
+    NSMutableArray * nsArr = [[NSMutableArray alloc]init];
+    int i=0;
+    for(NSString* str in dataLinearArray)
     {
-        int ran = [self randomNo:2];
-        if([dataLinearArray[ran] isEqualToString: @"0"])
-            dataLinearArray[ran] = [NSString stringWithFormat:@"%i",[self randomNo:1]];
+        if([str isEqualToString:@"0"])
+        {
+            [nsArr addObject:[NSNumber numberWithInt:i]];
+        }
+        i++;
     }
     
-    [self updateDataArrayWithDataLinearArray];
+    if(nsArr.count>0)
+    {
+        int num = arc4random_uniform((int)nsArr.count-1);
+        int ran = (int)[nsArr[num] integerValue];
+        dataLinearArray[ran] = [NSString stringWithFormat:@"%i",[self randomNo:1]];
+        [self updateDataArrayWithDataLinearArray];
+    }
     
 }
 //play sound
@@ -219,7 +261,7 @@ NSMutableArray *dataArray,*dataLinearArray;
         }
         case 3:
         {
-            num = arc4random_uniform(22);
+            num = arc4random_uniform(21);
             num++;
             break;
         
@@ -236,7 +278,6 @@ NSMutableArray *dataArray,*dataLinearArray;
 {
     
     NSMutableArray *ns = [[NSMutableArray alloc]init];
-    //NSMutableArray *ns1 = [[NSMutableArray alloc]init];
     
     for(NSString * str in nsa)
     {
@@ -245,32 +286,16 @@ NSMutableArray *dataArray,*dataLinearArray;
             [ns addObject:str];
         }
     }
-    /*
-     NSMutableArray * rns = [[ns reverseObjectEnumerator] mutableCopy];
-    
-    for(int i=0;i<rns.count-1;i++)
-    {
-        NSString* na1 = rns[i];
-        NSString* na2 = rns[i+1];
-        if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
-        {
-            int n = (int)[na1 integerValue];
-            rns[i] = [NSString stringWithFormat:@"%i", n*2];
-            rns[i+1]= rns[i+2];
-        }
-    }
-    for(NSString * str in rns)
-    {
-        if(![str isEqualToString:@"0"])
-        {
-            [ns1 addObject:str];
-        }
-    }*/
     
     
     
     return ns;
     
+    
+}
+
+-(void)checkIfFinished
+{
     
 }
 -(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
@@ -330,7 +355,7 @@ NSMutableArray *dataArray,*dataLinearArray;
             {
                 int n = (int)[na1 integerValue]*2;
                 dataArray[j][i] = [NSString stringWithFormat:@"%i",n];
-                
+                score+=n;
                 if(i-2>=0)
                 {
                     int h=1;
@@ -355,7 +380,7 @@ NSMutableArray *dataArray,*dataLinearArray;
     }
     //NSLog(@"%@",dataArray);
     [self updateLabelWithMaster2DDataArray];
-    //[self addElement];
+    [self addElement];
     
 }
 
@@ -413,7 +438,7 @@ NSMutableArray *dataArray,*dataLinearArray;
             {
                 int n = (int)[na1 integerValue]*2;
                 dataArray[j][i] = [NSString stringWithFormat:@"%i",n];
-                
+                score+=n;
                 if(i+2<count)
                 {
                     int h=1;
@@ -438,7 +463,7 @@ NSMutableArray *dataArray,*dataLinearArray;
     }
     //NSLog(@"%@",dataArray);
     [self updateLabelWithMaster2DDataArray];
-    // [self addElement];
+    [self addElement];
     
 }
 //Swipe Up function
@@ -485,41 +510,35 @@ NSMutableArray *dataArray,*dataLinearArray;
         
         j++;
     }
-    [self updateLabelWithMaster2DDataArray];
+    //[self updateLabelWithMaster2DDataArray];
     
     for(int j=0;j<count;j++)
     {
-        for(int i =0;i<count-2;i++)
+        for(int i = 0;i<count-1;i++)
         {
-            //NSString * msg = [NSString stringWithFormat:@"%@ %@",na[i],na[i-1]];
-            //NSLog(msg);
             NSString* na1 = dataArray[i][j];
             NSString* na2 = dataArray[i+1][j];
             
-            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"] && [na1 isEqualToString: na2 ])
+            if(![na1 isEqualToString:@"0"] && ![na2 isEqualToString:@"0"])
             {
-                int n = (int)[na1 integerValue]*2;
-                dataArray[i][j] = [NSString stringWithFormat:@"%i",n];
-                
-                
-                if(i+2<count)
+                if([na1 isEqualToString:na2])
                 {
-                    for(int k=i+1; k<count;k++)
+                    dataArray[i][j] = [NSString stringWithFormat:@"%i",[na1 intValue]*2];
+                    score +=[dataArray[i][j] intValue];
+                    if(i+2<count)
                     {
-                        if(k+1<count)
-                            dataArray[k][j] = dataArray[k+1][j];
-                        
-                    }
+                        for(int k=i+1;k<count-1;k++)
+                            dataArray[k][j]= dataArray[k+1][j];
+                        dataArray[count-1][j]=@"0";
+                    }else
+                        dataArray[i+1][j]=@"0";
                 }
-                else
-                    dataArray[i+1][j]=@"0";
             }
+            
         }
-        
     }
-    //NSLog(@"%@",dataArray);
     [self updateLabelWithMaster2DDataArray];
-    //[self addElement];
+    [self addElement];
     
     
 }
@@ -581,18 +600,28 @@ NSMutableArray *dataArray,*dataLinearArray;
             {
                 int n = (int)[na1 integerValue]*2;
                 dataArray[i][j] = [NSString stringWithFormat:@"%i",n];
-                
+                score+=n;
                 if(i-2>-1)
-                    dataArray[i-1][j]=dataArray[i-2][j];
+                {
+                    for(int k=i-1; k>0;k--)
+                    {
+                        if(k-1>-1){
+                            dataArray[k][j] = dataArray[k-1][j];
+                            dataArray[k-1][j]=@"0";
+                        }
+                        
+                    }
+                }
                 else
                     dataArray[i-1][j]=@"0";
+
             }
         }
         
     }
     //NSLog(@"%@",dataArray);
     [self updateLabelWithMaster2DDataArray];
-    //[self addElement];
+    [self addElement];
     
 }
 

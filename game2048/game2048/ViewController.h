@@ -32,6 +32,8 @@
 @property (weak, nonatomic) IBOutlet UILabel *lbl32;
 @property (weak, nonatomic) IBOutlet UILabel *lbl33;
 
+@property (weak, nonatomic) IBOutlet UILabel *lblScore;
+@property (weak, nonatomic) IBOutlet UILabel *lblHighScore;
 
 @end
 
