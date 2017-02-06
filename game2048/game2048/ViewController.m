@@ -19,31 +19,20 @@ int score;
 NSString *hScore;
 bool soundFlag;
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    soundFlag = YES;
-   
-    
-    hScore = [[NSUserDefaults standardUserDefaults] stringForKey:@"highScore"];
-    self.lblHighScore.text = hScore;
-    NSLog(@"%@2", hScore);
+   [super viewDidLoad];
     UIFont *currentFont = self.lbl00.font;
     
     newFont = [UIFont fontWithName:[NSString stringWithFormat:@"%@-Bold",currentFont.fontName] size:24];
+    soundFlag = YES;
+   
+    [self initializeGame];
+    hScore = [[NSUserDefaults standardUserDefaults] stringForKey:@"highScore"];
+    self.lblHighScore.text = hScore;
+    NSLog(@"%@", hScore);
+    
+    
     // Do any additional setup after loading the view, typically from a nib.
-    dataArray = [[NSMutableArray alloc] initWithCapacity: 4];
     
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:0];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:1];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:2];
-    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:3];
- 
-
-    
-    [self updateLabelWithMaster2DDataArray];
-    for(int i=0;i<2;i++)
-    {
-        [self addElement];
-    }
     //left Swipe
     UISwipeGestureRecognizer * swipeleft=[[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(swipeleft:)];
     swipeleft.direction=UISwipeGestureRecognizerDirectionLeft;
@@ -65,7 +54,24 @@ bool soundFlag;
     [self.view addGestureRecognizer:swipedown];
 
 }
-
+-(void) initializeGame
+{
+    score = 0;
+    dataArray = [[NSMutableArray alloc] initWithCapacity: 4];
+    
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:0];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:1];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:2];
+    [dataArray insertObject:[NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",nil] atIndex:3];
+    
+    
+    
+    [self updateLabelWithMaster2DDataArray];
+    for(int i=0;i<2;i++)
+    {
+        [self addElement];
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -121,6 +127,7 @@ bool soundFlag;
         
     }
     [self updateDataLinearArrayWithDataArray];
+    [self checkIfFinished];
     
     
 }
@@ -296,8 +303,49 @@ bool alertShown=NO;
 
 -(void)checkIfFinished
 {
-    
+    bool matchflag1 = NO, matchflag2 = NO;
+    for(int i=0;i<dataArray.count;i++)
+    {
+        for(int j=0;j<dataArray.count-1;j++)
+        {
+            NSString * ns1 = dataArray[i][j];
+            NSString * ns2 = dataArray[i][j+1];
+            
+            if([ns1 isEqualToString:@"0"] ||[ns2 isEqualToString:@"0"] ||[ns1 isEqualToString:ns2])
+            {
+                matchflag1=YES;
+                break;
+            }
+            
+            NSString * ns3 = dataArray[j][i];
+            NSString * ns4 = dataArray[j+1][i];
+            
+            if([ns3 isEqualToString:@"0"] ||[ns4 isEqualToString:@"0"] ||[ns3 isEqualToString:ns4])
+            {
+                matchflag2=YES;
+                break;
+            }
+        }
+        
+    }
+    if(!matchflag1 && !matchflag2)
+    {
+        UIAlertController * alertController =[UIAlertController alertControllerWithTitle:@"Game finished" message:@"You loose" preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertAction *ok = [UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {[self initializeGame];}];
+        [alertController addAction:ok];
+        
+        dispatch_async(dispatch_get_main_queue(),^{[self presentViewController:alertController animated:YES completion:nil];});
+        alertShown=YES;
+    }
 }
+
+
+- (IBAction)resetPressed:(id)sender {
+    [self initializeGame];
+}
+
+
+//swipe Right
 -(void)swiperight:(UISwipeGestureRecognizer*)gestureRecognizer
 {
     int count = (int)dataArray.count;
