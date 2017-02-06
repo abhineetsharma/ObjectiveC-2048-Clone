@@ -341,6 +341,16 @@ bool alertShown=NO;
 
 
 - (IBAction)resetPressed:(id)sender {
+    UIAlertController * alertController =[UIAlertController alertControllerWithTitle:@"Want to reset the game" message:@"All progress will get lost" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction * reset = [UIAlertAction actionWithTitle:@"Reset" style:UIAlertActionStyleDefault handler:^(UIAlertAction * action) {[self initializeGame];}];
+    
+     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
+    [alertController addAction:reset];
+    [alertController addAction:cancel];
+
+    
+    dispatch_async(dispatch_get_main_queue(),^{[self presentViewController:alertController animated:YES completion:nil];});
+    alertShown=YES;
     [self initializeGame];
 }
 
